@@ -1,0 +1,342 @@
+<outboundPredefinedDataConfiguration>
+  <classificationIds>
+    <localization>Localization</localization>
+    <language>Language</language>
+    <status>Status</status>
+    <approvedStatus>Status_Approved</approvedStatus>
+    <approved360Status>Status_Approved_360</approved360Status>
+    <expiredStatus>Status_Expired</expiredStatus>
+    <hiddenStatus>Status_Hidden</hiddenStatus>
+    <prototypeStatus>Status_Prototype</prototypeStatus>
+    <underReviewProductStatus>Status_UnderReviewProduct</underReviewProductStatus>
+    <underReviewMarketingStatus>Status_UnderReviewMarketing</underReviewMarketingStatus>
+    <underReviewMediaStatus>Status_UnderReviewMedia</underReviewMediaStatus>
+    <underReviewRetailBrandStatus>Status_UnderReviewRetailBrand</underReviewRetailBrandStatus>
+    <openStatus>Status_Open</openStatus>
+    <closedStatus>Status_Closed</closedStatus>
+    <missingStatus>Status_Missing</missingStatus>
+    <brandVideos>BrandVideos</brandVideos>
+    <campaignImagesLowResolution>Campaign Images Low Resolution</campaignImagesLowResolution>
+    <campaignImagesRaw>CampaignImagesRaw</campaignImagesRaw>
+    <campaignImagesPlaceholdersWithImages>CampaignImagesPlaceholdersWithImages</campaignImagesPlaceholdersWithImages>
+    <campaignImagesPlaceholdersWithoutImages>CampaignImagesPlaceholdersWithoutImages</campaignImagesPlaceholdersWithoutImages>
+    <productCatalogues>ProductCatalogues</productCatalogues>
+    <productCategory>ProductCategory</productCategory>
+    <techEyewearProductImagesCategory>Tech_ProductImages_Eyewear</techEyewearProductImagesCategory>
+    <techAFAProductImagesCategory>Tech_ProductImages_AFA</techAFAProductImagesCategory>
+    <techEyewearAccessoriesProductImagesCategory>Tech_ProductImages_EyewearAccessories</techEyewearAccessoriesProductImagesCategory>
+    <productImagesTechDraft>TechDraftsCategory</productImagesTechDraft>
+    <retailStoresMainCategory>Stores_Main</retailStoresMainCategory>
+    <brand>Brand</brand>
+    <retailBrand>RetailBrand</retailBrand>
+    <subjectType>SubjectType</subjectType>
+    <brandUsageDirective>BrandUsageDirective</brandUsageDirective>
+    <MacroBrandRayBan>MacroBrandRay-Ban</MacroBrandRayBan>
+  </classificationIds>
+  <fieldNames>
+    <name>Name</name>
+    <products>Products</products>
+    <productLinks>Product Links</productLinks>
+    <widthPixels>Width (pixels)</widthPixels>
+    <heightPixels>Height (pixels)</heightPixels>
+    <rightsBeginDateWorldWide>Rights Begin Date</rightsBeginDateWorldWide>
+    <rightsEndDateWorldWide>Expiration date (Rights end date)</rightsEndDateWorldWide>
+    <rightsBeginDateRegex>^Rights Begin Date_(?&lt;localization&gt;.+)$</rightsBeginDateRegex>
+    <rightsEndDateRegex>^Expiration date \(Rights end date\)_(?&lt;localization&gt;.+)$</rightsEndDateRegex>
+    <color>Featured Color (color code)</color>
+    <model>Featured Style (Model)</model>
+    <upcCode>UPC code</upcCode>
+    <release>Release</release>
+    <cropsType>Crops Type</cropsType>
+    <relatedCampaignImages>Related Campaign Images</relatedCampaignImages>
+    <isModelColorPrimary>Is Model-Color Primary</isModelColorPrimary>
+    <ProductImageType>Product Image Type</ProductImageType>
+    <AdditionalProductShots>Additional Product Shots</AdditionalProductShots>
+    <virtualStore>Virtual Store</virtualStore>
+  </fieldNames>
+  <fieldValues>
+    <nameProductCampaignRegex>^(?&lt;productCampaign&gt;.+)_\d{1,10}(\.\d{1,3})?x\d{1,10}(\.\d{1,3})?(?:_(?:M|m))?$</nameProductCampaignRegex>
+    <xxxColor>XXX</xxxColor>
+  </fieldValues>
+  <localizationMappings>
+    <localizationMapping fileNameRegex="(?i)_fr(_m)?$" label="_FR_" classificationNames="BE,CA,CH,FR" />
+    <localizationMapping fileNameRegex="(?i)_pt(_m)?$" label="_PT_" classificationNames="BR,PT" />
+  </localizationMappings>
+  <assetNameMappings>
+    <assetNameMapping assetNameRegex="(?i)_fr(_m)?" label="_FR_" />
+    <assetNameMapping assetNameRegex="(?i)_pt(_m)?" label="_PT_" />
+  </assetNameMappings>
+  <publishers>
+    <publisher name="CI2MyLux" assetObserverPublisherId="1" checkTriggers="true" priority="100" description="Campaign Images to MyLuxottica Outbound Export" useExportCodes="true">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND FieldName('Crops Type') = 'Master Crops'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">(Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND FieldName('Crops Type') = 'Master Crops' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND FieldName('Products') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR Classification.Identifier = 'AllB2B_MyLuxottica' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'))</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">(Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg'))</criteria>
+        <criteria name="Brand Usage Directive Criteria" description="Criteria for Brand Usage Directive validation for invalid data report">Classification.Identifier = 'AllB2B_LuxotticaDays' OR Classification.Identifier = 'AllB2B_MyLuxottica' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'</criteria>
+        <criteria name="Product Campaign Criteria" description="Criteria for matching items of the same Product and Campaign">FieldName('Name') = ? AND (Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR Classification.Identifier = 'AllB2B_MyLuxottica' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'))</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CI2MyLuxDays_Placeholders" assetObserverPublisherId="25" checkTriggers="true" priority="60" description="Campaign Images Placeholders to MyLuxotticaDays Outbound Export" useExportCodes="true">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'CampaignImagesPlaceholdersWithImages' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">Classification.Identifier = 'CampaignImagesPlaceholdersWithImages' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal') AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg' OR LatestVersionOfMasterFile.Extension = 'png')</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">(Classification.Identifier = 'CampaignImagesPlaceholdersWithImages' OR Classification.Identifier = 'CampaignImagesPlaceholdersWithoutImages') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (Classification.Identifier = 'CampaignImagesPlaceholdersWithoutImages' OR LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg' OR LatestVersionOfMasterFile.Extension = 'png')</criteria>
+        <criteria name="Brand Usage Directive Criteria" description="Criteria for Brand Usage Directive validation for invalid data report">Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CI2MyLuxDays_Preliminary" assetObserverPublisherId="20" checkTriggers="true" priority="70" description="Campaign Images Preliminary to MyLuxotticaDays Outbound Export" useExportCodes="true">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'CampaignImagesRaw' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = Status_UnderReviewProduct OR Classification.Identifier = Status_UnderReviewMarketing OR Classification.Identifier = Status_Approved) AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">Classification.Identifier = 'CampaignImagesRaw' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = Status_UnderReviewProduct OR Classification.Identifier = Status_UnderReviewMarketing OR Classification.Identifier = Status_Approved) AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (LatestVersionOfMasterFile.Extension = TIF OR LatestVersionOfMasterFile.Extension = TIFF OR LatestVersionOfMasterFile.Extension = PSD)</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">Classification.Identifier = 'CampaignImagesRaw' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = Status_UnderReviewProduct OR Classification.Identifier = Status_UnderReviewMarketing OR Classification.Identifier = Status_Approved) AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (LatestVersionOfMasterFile.Extension = TIF OR LatestVersionOfMasterFile.Extension = TIFF OR LatestVersionOfMasterFile.Extension = PSD)</criteria>
+        <criteria name="Related Records Parent Criteria" description="Validity criteria for INDD images">Id IN ? AND LatestVersionOfMasterFile.Extension = INDD AND FieldName('Related Campaign Images').Child &lt;&gt; '' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND NOT Classification.Identifier = 'Status_Expired'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CI2MyLuxDays_Approved" assetObserverPublisherId="21" checkTriggers="true" priority="80" description="Campaign Images Approved to MyLuxotticaDays Outbound Export" useExportCodes="true">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal')</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') &lt;&gt; ''</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Crops Type') = 'Master Crops'</criteria>
+        <criteria name="Brand Usage Directive Criteria" description="Criteria for Brand Usage Directive validation for invalid data report">Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'</criteria>
+        <criteria name="Product Campaign Criteria" description="Criteria for matching items of the same Product and Campaign">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') = ?</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CI2MyLuxDays_UsageStarted" assetObserverPublisherId="22" checkTriggers="true" priority="90" description="Campaign Images Usage Started to MyLuxotticaDays Outbound Export" useExportCodes="true">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal')</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Localization' AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Name') &lt;&gt; '' AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; ''</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Crops Type') = 'Master Crops'</criteria>
+        <criteria name="Brand Usage Directive Criteria" description="Criteria for Brand Usage Directive validation for invalid data report">Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal'</criteria>
+        <criteria name="Product Campaign Criteria" description="Criteria for matching items of the same Product and Campaign">Classification.Identifier = 'Campaign Images Low Resolution' AND Classification.Identifier = 'Brand' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing') AND (Classification.Identifier = 'AllB2B_LuxotticaDays' OR DirectClassification.Identifier = 'AllExternal_AllB2B' OR DirectClassification.Identifier = 'BrandUsageDirective_AllExternal') AND (LatestVersionOfMasterFile.Extension = 'jpg' OR LatestVersionOfMasterFile.Extension = 'jpeg') AND FieldName('Crops Type') = 'Master Crops' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') = ?</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLux_TechDraft" assetObserverPublisherId="27" checkTriggers="true" priority="110" description="Product Images Tech Draft to MyLuxottica Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'TechDraftsCategory'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images Tech Draft classification">Classification.Identifier = 'TechDraftsCategory' AND FieldName('Featured Style (Model)') &lt;&gt; ''</criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PC2MyLux" assetObserverPublisherId="23" checkTriggers="true" priority="50" description="Product Catalogues Images Approved to MyLuxottica Outbound Export" useExportCodes="true">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'ProductCatalogues' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for adding items to queue for image export">Classification.Identifier = 'ProductCatalogues' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND Classification.Identifier = 'Brand' AND NOT DirectClassification.Identifier = 'Brand' AND Classification.Identifier = 'Localization' AND FieldName('Release') &lt;&gt; '' AND LatestVersionOfMasterFile.Extension = PDF AND LatestVersionOfMasterFile.Filesize &lt;= 10485760</criteria>
+        <criteria name="Invalid Data Criteria" description="Criteria to filter items for validation for invalid data report">Classification.Identifier = 'ProductCatalogues' AND Classification.Identifier = 'Status_Approved' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND LatestVersionOfMasterFile.Extension = PDF AND LatestVersionOfMasterFile.Filesize &lt;= 10485760</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CIPlaceholders2SAP" assetObserverPublisherId="26" checkTriggers="true" priority="0" description="Campaign Images Placeholders to SAP Metadata Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'CampaignImagesPlaceholdersWithImages' OR Classification.Identifier = 'CampaignImagesPlaceholdersWithoutImages') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for metadata export">(Classification.Identifier = 'CampaignImagesPlaceholdersWithImages' OR Classification.Identifier = 'CampaignImagesPlaceholdersWithoutImages') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') &lt;&gt; ''</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CIPreliminary2SAP" assetObserverPublisherId="28" checkTriggers="true" priority="0" description="Campaign Images Preliminary to SAP Metadata Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'CampaignImagesRaw' AND (Classification.Identifier = 'Status_UnderReviewProduct' OR Classification.Identifier = 'Status_UnderReviewMarketing' OR Classification.Identifier = 'Status_UnderReviewRetailBrand' OR Classification.Identifier = 'Status_Approved') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for metadata export">Classification.Identifier = 'CampaignImagesRaw' AND (Classification.Identifier = 'Status_UnderReviewProduct' OR Classification.Identifier = 'Status_UnderReviewMarketing' OR Classification.Identifier = 'Status_UnderReviewRetailBrand' OR Classification.Identifier = 'Status_Approved') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = TIF OR LatestVersionOfMasterFile.Extension = TIFF OR LatestVersionOfMasterFile.Extension = PSD)</criteria>
+        <criteria name="Related Records Parent Criteria" description="Validity criteria for INDD images">Id IN ? AND LatestVersionOfMasterFile.Extension = INDD AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_UnderReviewMarketing' OR Classification.Identifier = 'Status_UnderReviewRetailBrand') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="CIApproved2SAP" assetObserverPublisherId="29" checkTriggers="true" priority="0" description="Campaign Images Approved to SAP Metadata Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Campaign Images Low Resolution' AND (Classification.Identifier = 'Status_UnderReviewMarketing' OR Classification.Identifier = 'Status_UnderReviewRetailBrand' OR Classification.Identifier = 'Status_Approved') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for metadata export">Classification.Identifier = 'Campaign Images Low Resolution' AND (Classification.Identifier = 'Status_UnderReviewMarketing' OR Classification.Identifier = 'Status_UnderReviewRetailBrand' OR Classification.Identifier = 'Status_Approved') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Products') &lt;&gt; '' AND FieldName('Name') &lt;&gt; '' AND (LatestVersionOfMasterFile.Extension = JPG OR LatestVersionOfMasterFile.Extension = JPEG) AND FieldName('Crops Type') = 'Master Crops'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2PIM" assetObserverPublisherId="30" checkTriggers="true" priority="0" description="Product Images to PIM Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Category'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier = 'Tech_ProductImages_Category' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; '' AND NOT FieldName('Featured Color (color code)') = 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2PIMPrimaryColor" assetObserverPublisherId="43" checkTriggers="true" priority="0" description="Product Images Primary Color to PIM Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Category'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier = 'Tech_ProductImages_Category' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Is Model-Color Primary') = 'True' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PIAFA2MyLux" assetObserverPublisherId="32" checkTriggers="true" priority="10" description="Product Images AFA to MyLuxottica Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_AFA' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images AFA classification and Model and Color fields">Classification.Identifier = 'Tech_ProductImages_AFA' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; '' AND File[IsMaster = true AND FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PIAFA2MyLux_PrimaryColor" assetObserverPublisherId="46" checkTriggers="true" priority="10" description="Product Images PrimaryColor AFA to MyLuxottica Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_AFA' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images AFA classification and Model and Color fields">Classification.Identifier = 'Tech_ProductImages_AFA' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; '' AND FieldName('Is Model-Color Primary') = 'True' AND File[IsMaster = true AND FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="BV2SAP" assetObserverPublisherId="33" checkTriggers="true" priority="0" description="Brand Videos to SAP Metadata Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'BrandVideos' AND NOT (Classification.Identifier = 'Status_Expired' OR Classification.Identifier = 'Status_Hidden' OR Classification.Identifier = 'Status_UnderReview' OR Classification.Identifier = 'Rejected')</criteria>
+        <criteria name="Export Criteria" description="Validity criteria for metadata export">Classification.Identifier = 'BrandVideos' AND NOT (Classification.Identifier = 'Status_Expired' OR Classification.Identifier = 'Status_Hidden' OR Classification.Identifier = 'Status_UnderReview' OR Classification.Identifier = 'Rejected')</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="RS2VirtualStore" assetObserverPublisherId="34" checkTriggers="true" priority="95" description="Retail Stores to Virtual Store Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Stores_Main' AND Classification.Identifier = 'Status_Approved' AND Classification.Identifier = 'Status_Open' AND NOT Classification.Identifier = 'Status_Missing' AND FileCount &gt; 0</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier = 'Stores_Main' AND Classification.Identifier = 'Status_Approved' AND Classification.Identifier = 'Status_Open' AND NOT Classification.Identifier = 'Status_Missing' AND FileCount &gt; 0 AND File[FieldName('Virtual Store').Option.Name = 'Yes']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLux_Catalog_Model" assetObserverPublisherId="35" checkTriggers="true" priority="150" description="Product Images to MyLuxottica Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND (FieldName('Is Model-Color Primary') = 'True' OR FieldName('Featured Color (color code)') = 'XXX')</criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLux_Catalog_Model_Color" assetObserverPublisherId="36" checkTriggers="true" priority="140" description="Product Images to MyLuxottica Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' </criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLux_360_Model_Color" assetObserverPublisherId="37" checkTriggers="true" priority="130" description="Product Images to MyLuxottica Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND Classification.Identifier = 'Status_Approved_360' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' </criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLux_360_Model" assetObserverPublisherId="38" checkTriggers="true" priority="120" description="Product Images to MyLuxottica Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND Classification.Identifier = 'Status_Approved_360' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND (FieldName('Is Model-Color Primary') = 'True' OR FieldName('Featured Color (color code)') = 'XXX') </criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLuxDays_ModelCatalogShotForApp" assetObserverPublisherId="39" checkTriggers="true" priority="160" description="Product Images to MyLuxotticaDays Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND (FieldName('Collection') = '201*') </criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLuxDays_Catalog_Model" assetObserverPublisherId="40" checkTriggers="true" priority="40" description="Product Images to MyLuxotticaDays Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND (FieldName('Is Model-Color Primary') = 'True' OR FieldName('Featured Color (color code)') = 'XXX') </criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLuxDays_Catalog_Model_Color" assetObserverPublisherId="41" checkTriggers="true" priority="30" description="Product Images to MyLuxotticaDays Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND FieldName('Featured Style (Model)') &lt;&gt; ''</criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2MyLuxDays_360_Model_Color" assetObserverPublisherId="42" checkTriggers="true" priority="20" description="Product Images to MyLuxotticaDays Outbound Export">
+      <classificationPaths></classificationPaths>
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Product Images classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND Classification.Identifier = Status_Approved_360 AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND FieldName('Featured Style (Model)') &lt;&gt; ''</criteria>
+        <criteria name="Model Color Primary Criteria" description="Model-Color Primary search expression: Featured Style (Model) specified as parameter, Is Model-Color Primary = true, Category/Product Images classification">FieldName('Featured Style (Model)') = '{0}' AND FieldName('Is Model-Color Primary') = 'True' AND Classification.Identifier = 'Tech_ProductImages_Eyewear'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="ACC2MyLux" assetObserverPublisherId="44" checkTriggers="true" priority="0" description="Eyewear Accessories to MyLuxottica Outbound Export">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_EyewearAccessories' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Eyewear Accessories classification and Model and Color fields">Classification.Identifier = 'Tech_ProductImages_EyewearAccessories' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; '' AND File[IsMaster = true AND FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <!--<publisher name="PI2RedCarpet" assetObserverPublisherId="45" checkTriggers="true" priority="0" description="Product Images to Red Carpet">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Eyewear classification and Model and Color fields">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND Classification.Identifier = 'Brand' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND Classification.Identifier = 'Status_Approved_360' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; ''</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2RedCarpet_Catalog" assetObserverPublisherId="47" checkTriggers="true" priority="0" description="Product Images Catalog to Red Carpet">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria: Eyewear classification and Model and Color fields">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND Classification.Identifier = 'Brand' AND (Classification.Identifier = 'Status_Approved' OR Classification.Identifier = 'Status_Approved_360') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND FieldName('Featured Style (Model)') &lt;&gt; '' AND FieldName('Featured Color (color code)') &lt;&gt; '' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>-->
+    <!-- PI2CDN Initial Export -->
+    <!-- 
+    <publisher name="PI2CDN_Catalog_MO" assetObserverPublisherId="50" checkTriggers="true" priority="190" description="Product Images (Eye, Afa) Catalog Primary Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Is Model-Color Primary') = 'True' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_Catalog_MOCO" assetObserverPublisherId="51" checkTriggers="true" priority="200" description="Product Images (Eye, Afa, Acc) Catalog Other Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_360_MO" assetObserverPublisherId="52" checkTriggers="true" priority="170" description="Product Images (Eye) Degree Primary Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier = 'Tech_ProductImages_Eyewear' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Is Model-Color Primary') = 'True' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_360_MOCO" assetObserverPublisherId="53" checkTriggers="true" priority="180" description="Product Images (Eye, Afa, Acc) Degree Other Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_Alternative_MOCO" assetObserverPublisherId="54" checkTriggers="true" priority="210" description="Product Images (Eye, Afa, Acc) Alternative Other Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Placeholder' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_TechDraft" assetObserverPublisherId="55" checkTriggers="true" priority="160" description="Product Images Tech Drafts to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier='TechDraftsCategory'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier='TechDraftsCategory'</criteria>
+      </criteriaItems>
+    </publisher>
+-->
+    <!-- PI2CDN Standard Export -->
+    <publisher name="PI2CDN_Catalog_MO" assetObserverPublisherId="50" checkTriggers="true" priority="190" description="Product Images (Eye, Afa) Catalog Primary Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Is Model-Color Primary') = 'True' AND FieldName('Featured Color (color code)') <> 'XXX'</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_Catalog_MOCO" assetObserverPublisherId="51" checkTriggers="true" priority="200" description="Product Images (Eye, Afa, Acc) Catalog Other Color to CDN">
+     classification.identifier=Status_Placeholder and file.'product image type'<>'' and (Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') <> 'XXX'
+    </publisher>
+    <publisher name="PI2CDN_360_MO" assetObserverPublisherId="52" checkTriggers="true" priority="170" description="Product Images (Eye) Degree Primary Color to CDN">
+      <criteriaItems>
+        Classification.Identifier = 'Tech_ProductImages_Eyewear' AND Classification.Identifier = 'Status_Approved_360' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Is Model-Color Primary') = 'True' AND FieldName('Featured Color (color code)') <> 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image'] and  classification.identifier=Status_Placeholder and file.'product image type'<>''
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_360_MOCO" assetObserverPublisherId="53" checkTriggers="true" priority="180" description="Product Images (Eye, Afa, Acc) Degree Other Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">(Classification.Identifier = 'Tech_ProductImages_Eyewear' OR Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND Classification.Identifier = 'Status_Approved_360' AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') &lt;&gt; 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image']</criteria>
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_Alternative_MOCO" assetObserverPublisherId="54" checkTriggers="true" priority="210" description="Product Images (Eye, Afa, Acc) Alternative Other Color to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">(Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden'</criteria>
+        (Classification.Identifier='Tech_ProductImages_AFA' OR Classification.Identifier='Tech_ProductImages_EyewearAccessories') AND NOT Classification.Identifier = 'Status_Expired' AND NOT Classification.Identifier = 'Status_Prototype' AND NOT Classification.Identifier = 'Status_Hidden' AND FieldName('Featured Color (color code)') <> 'XXX' AND File[FieldName('Product Image Type').Option.Name = 'Catalog image'] and  classification.identifier=Status_Placeholder and file.'product image type'<>''
+      </criteriaItems>
+    </publisher>
+    <publisher name="PI2CDN_TechDraft" assetObserverPublisherId="55" checkTriggers="true" priority="160" description="Product Images Tech Drafts to CDN">
+      <criteriaItems>
+        <criteria name="Channel Criteria" description="Predefined channel criteria based on category classification">Classification.Identifier='TechDraftsCategory'</criteria>
+        <criteria name="Export Criteria" description="Preliminary export criteria">Classification.Identifier='TechDraftsCategory'</criteria>
+      </criteriaItems>
+    </publisher>
+  </publishers>
+</outboundPredefinedDataConfiguration>

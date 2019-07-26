@@ -344,10 +344,7 @@ TEst
     </publisher>
   </publishers>
 </outboundPredefinedDataConfiguration>
-<<<<<<< HEAD
 
 
 TETST'
 fdf
-=======
->>>>>>> parent of 63dadc6... add
